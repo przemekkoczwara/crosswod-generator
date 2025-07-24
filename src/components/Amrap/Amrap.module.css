@@ -1,0 +1,38 @@
+.container {
+  max-width: 850px;
+  width: 100%;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  /* box-shadow: 0px 16px 18px -9px rgb(208, 54, 33); */
+  margin-top: 4rem;
+}
+
+.group {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 600px;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  object-fit: cover;
+}
+
+.workoutContext {
+  padding: 1rem 2rem;
+  flex: 1;
+}
+
+.description {
+  padding: 1rem 1rem;
+}
+
+.workoutContext button {
+  background-color: greenyellow;
+}
