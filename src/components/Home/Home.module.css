@@ -1,14 +1,14 @@
-/* Home.module.css */
+/* Home style */
 
 .mainContainer {
   max-width: 850px;
+  width: 100%;
   margin: 2rem auto;
   padding: 1rem 2rem;
   background-color: #2c2c2c;
   border-radius: 10px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.3); /* półprzezroczyste białe tło */
-  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   /* box-shadow: 0px 16px 18px -9px rgb(208, 54, 33); */
   margin-top: 4rem;
@@ -16,6 +16,7 @@
 
 .title {
   color: whitesmoke;
+  color: greenyellow;
 }
 
 .subtitle {
@@ -34,10 +35,22 @@
   border: 1px solid rgb(131, 137, 132);
   border-radius: 16px;
   padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  /* min-height: 280px; */
 }
 .workoutType h2 {
   margin-bottom: 1.2rem;
 }
 .workoutType p {
-  font-size: 1rem;
+  font-size: 12px;
+  margin-top: 20px;
 }
+
+.workoutType button {
+  /* background-color: greenyellow; */
+  margin-top: 40px;
+}
+

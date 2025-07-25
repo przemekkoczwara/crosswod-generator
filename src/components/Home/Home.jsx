@@ -1,9 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
+import Button from '../Button/Button';
 
 export default function Home() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <main className={styles.mainContainer}>
       <h1 className={styles.title}>Welcome to CrossWOD Generator</h1>
@@ -15,7 +17,9 @@ export default function Home() {
             As Many Rounds As Possible – complete as many rounds as you can
             within the time limit.
           </p>
-          <button>Start AMRAP</button>
+          <Button onClick={() => navigate('/amrap')}>
+            Start AMRAP
+          </Button>
         </div>
 
         <div className={styles.workoutType}>
@@ -24,7 +28,7 @@ export default function Home() {
             Classic Workout of the Day – a mix of functional exercises with
             reps/time goals.
           </p>
-          <button>Start WOD</button>
+          <Button onClick={() => console.log('Click WOD')}>Start WOD</Button>
         </div>
 
         <div className={styles.workoutType}>
@@ -33,7 +37,9 @@ export default function Home() {
             Every Minute On the Minute – perform a task at the start of every
             minute.
           </p>
-          <button>Start EMOM</button>
+          <Button onClick={() => console.log('Clicked EMOM')}>
+            Start EMOM
+          </Button>
         </div>
       </section>
     </main>

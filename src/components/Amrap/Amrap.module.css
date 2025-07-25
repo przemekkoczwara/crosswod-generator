@@ -33,6 +33,20 @@
   padding: 1rem 1rem;
 }
 
-.workoutContext button {
-  background-color: greenyellow;
+.navigateButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.workoutList {
+  /* text-align: left; */
+  margin-top: 30px;
+  line-height: 2rem;
+  background-color: rgb(152, 244, 134);
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+
+.timer {
+  color: white;
 }
