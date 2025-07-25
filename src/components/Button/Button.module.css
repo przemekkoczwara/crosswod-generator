@@ -1,0 +1,33 @@
+/* Button style*/
+
+.button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: inherit;
+  width: fit-content;
+}
+
+.default {
+  background-color: white;
+}
+
+.default:hover {
+  background-color: whitesmoke;
+}
+
+.back {
+  background-color: rgb(233, 54, 34);
+}
+
+.back:hover {
+  background-color: red;
+}
+
+.random {
+  background-color: greenyellow;
+}
+.start {
+  background-color: white;
+}
