@@ -28,7 +28,7 @@ export default function Amrap() {
 
   // start amrap
   const workoutStart = () => {
-    if (!workout) return alert('Select a workout!');
+    if (!workout) return;
     console.log('Start AMRAP workout', workout);
     setIsTimerOn(true);
   };
