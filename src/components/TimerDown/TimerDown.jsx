@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './TimerDown.module.css';
 
-export default function Timer({ seconds, timeToEnd, isActive, resetTimer }) {
+export default function TimerDown({ seconds, timeToEnd, isActive, resetTimer }) {
   const [timeLeft, setTimeLeft] = useState(seconds);
   useEffect(() => {
     setTimeLeft(seconds);

@@ -5,7 +5,7 @@ import cardImage from '../../assets/Wod2.jpg';
 import EXERCISES from '../../data/exercises';
 import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
-import TimerUp from '../TimerDown/TimerDown';
+import TimerUp from '../TimerUp/TimerUp';
 
 export default function Wod() {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ export default function Wod() {
   const [hasStartedTimer, setHasStartedTimer] = useState(false);
   const [resetTimer, setResetTimer] = useState(0);
   const [timerSeconds] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
 
   const randomWorkout = () => {
     const selectedExercises = getRandomExercises(EXERCISES, 5);
@@ -28,12 +29,22 @@ export default function Wod() {
   // start wod
   const workoutStart = () => {
     if (!workout) return;
-    console.log('Star WOD workout');
-  };
-  // koniec czasu
 
-  const timerEnd = () => {
-    alert("Time's up.Traning completed!");
+    if (isTimerOn) {
+      setIsTimerOn(false);
+      setIsFinished(true);
+      return;
+    }
+
+    if (isFinished) {
+      alert('Your score will be saved');
+      setIsFinished(false);
+      setResetTimer((prev) => prev + 1);
+      return;
+    }
+    setIsTimerOn(true);
+    hasStartedTimer(true);
+    console.log('Star WOD workout');
   };
 
   return (
@@ -61,7 +72,6 @@ export default function Wod() {
           {hasStartedTimer && (
             <TimerUp
               seconds={timerSeconds}
-              timeToEnd={timerEnd}
               isActive={isTimerOn}
               resetTimer={resetTimer}
             />
@@ -77,13 +87,16 @@ export default function Wod() {
               </ul>
             )}
           </div>
-          {workout && !isTimerOn && (
-            <Button styleType="start" onClick={workoutStart}>
-              Start WOD
+          {workout && (
+            <Button
+              styleType={isTimerOn ? 'stop' : isFinished ? 'save' : 'start'}
+              onClick={workoutStart}
+            >
+              {isTimerOn ? 'STOP' : isFinished ? 'SAVE SCORE' : 'Start WOD'}
             </Button>
           )}
         </div>
       </div>
     </section>
-  );
+  ); 
 }
