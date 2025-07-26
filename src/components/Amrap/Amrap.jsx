@@ -5,7 +5,7 @@ import cardImage from '../../assets/cardAmrap2.jpg';
 import EXERCISES from '../../data/exercises';
 import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
-import Timer from '../Timer/Timer';
+import TimerDown from '../TimerDown/TimerDown';
 
 export default function Amrap() {
   const navigate = useNavigate();
@@ -24,12 +24,12 @@ export default function Amrap() {
     setHasStartedTimer(true);
     setIsTimerOn(false);
     setResetTimer((prev) => prev + 1);
-  };    
+  };
 
   // start amrap
   const workoutStart = () => {
     if (!workout) return;
-    console.log('Start AMRAP workout', workout);
+    console.log('Start AMRAP workout');
     setIsTimerOn(true);
   };
   // koniec czasu
@@ -42,7 +42,7 @@ export default function Amrap() {
     <section className={styles.container}>
       <div className={styles.group}>
         <div className={styles.img}>
-          <img src={cardImage} alt="bags" />
+          <img src={cardImage} alt="Ring row men" />
         </div>
         <div className={styles.workoutContext}>
           <h2 className={styles.title}>AMRAP</h2>
@@ -50,11 +50,10 @@ export default function Amrap() {
             As Many Rounds As Possible – complete as many rounds as you can
             within the time limit.
           </p>
-
           <nav>
             <div className={styles.navigateButtons}>
               <Button styleType="back" onClick={backToHome}>
-                Back to home
+                Go back
               </Button>
               <Button styleType="random" onClick={randomWorkout}>
                 Random Training
@@ -63,7 +62,7 @@ export default function Amrap() {
           </nav>
 
           {hasStartedTimer && (
-            <Timer
+            <TimerDown
               seconds={timerSeconds}
               timeToEnd={timerEnd}
               isActive={isTimerOn}

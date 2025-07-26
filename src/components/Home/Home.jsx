@@ -17,9 +17,7 @@ export default function Home() {
             As Many Rounds As Possible – complete as many rounds as you can
             within the time limit.
           </p>
-          <Button onClick={() => navigate('/amrap')}>
-            Start AMRAP
-          </Button>
+          <Button onClick={() => navigate('/amrap')}>Start AMRAP</Button>
         </div>
 
         <div className={styles.workoutType}>
@@ -28,7 +26,7 @@ export default function Home() {
             Classic Workout of the Day – a mix of functional exercises with
             reps/time goals.
           </p>
-          <Button onClick={() => console.log('Click WOD')}>Start WOD</Button>
+          <Button onClick={() => navigate('/wod')}>Start WOD</Button>
         </div>
 
         <div className={styles.workoutType}>

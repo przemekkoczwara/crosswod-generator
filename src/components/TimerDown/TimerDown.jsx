@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Timer.module.css';
+import styles from './TimerDown.module.css';
 
 export default function Timer({ seconds, timeToEnd, isActive, resetTimer }) {
   const [timeLeft, setTimeLeft] = useState(seconds);
