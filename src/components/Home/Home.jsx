@@ -35,9 +35,7 @@ export default function Home() {
             Every Minute On the Minute – perform a task at the start of every
             minute.
           </p>
-          <Button onClick={() => console.log('Clicked EMOM')}>
-            Start EMOM
-          </Button>
+          <Button onClick={() => navigate('/emom')}>Start EMOM</Button>
         </div>
       </section>
     </main>
