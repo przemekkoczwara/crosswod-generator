@@ -17,20 +17,29 @@ export default function Amrap() {
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [hasStartedTimer, setHasStartedTimer] = useState(false);
   const [resetTimer, setResetTimer] = useState(0);
-  const [timerSeconds] = useState(12 * 60); // powiedzmy ze defaultowy // do zmiany bedzie
+
+  // new function
+  const [selectLevel, setSelectedLevel] = useState('medium'); // default level
+  const [exerciseCount, setExerciseCount] = useState(4); // default level
+  const [durationMin, setDurationMin] = useState(12);
+  const [timerSeconds, setTimerSeconds] = useState(durationMin * 60); // powiedzmy ze defaultowy // do zmiany bedzie
 
   // useEffect
 
   useEffect(() => {
     fetch('/database.json')
       .then((response) => {
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok)
+          throw new Error(`HTTP error! Status: ${response.status}`);
         return response.json();
       })
       .then((data) => setAllExercises(data.exercises))
       .catch((error) => console.error('Fetch error:', error));
   }, []);
 
+  useEffect(() => {
+    setTimerSeconds(durationMin * 60);
+  }, [durationMin]);
 
   // select workout
   const randomWorkout = () => {
@@ -41,6 +50,7 @@ export default function Amrap() {
     setHasStartedTimer(true);
     setIsTimerOn(false);
     setResetTimer((prev) => prev + 1);
+    setTimerSeconds(durationMin * 60);
   };
 
   // start amrap
@@ -67,6 +77,69 @@ export default function Amrap() {
             As Many Rounds As Possible – complete as many rounds as you can
             within the time limit.
           </p>
+          <div className={styles.workoutLevelsControls}>
+            <p>Choose workout level</p>
+            <label>
+              <input
+                type="radio"
+                name="difficulty"
+                value="easy"
+                checked={selectLevel === 'easy'}
+                onChange={() => setSelectedLevel('easy')}
+              />
+              Easy
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="difficulty"
+                value="medium"
+                checked={selectLevel === 'medium'}
+                onChange={() => setSelectedLevel('medium')}
+              />
+              Medium
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="difficulty"
+                value="hard"
+                checked={selectLevel === 'hard'}
+                onChange={() => setSelectedLevel('hard')}
+              />{' '}
+              Hard
+            </label>
+          </div>
+          <div className={styles.workoutCounterControls}>
+            <p>How many exercises?</p>
+            {[1, 2, 4, 5, 6, 7, 8].map((count) => (
+              <label key={count}>
+                <input
+                  type="radio"
+                  name="exerciseCount"
+                  value={count}
+                  checked={exerciseCount === count}
+                  onChange={() => setExerciseCount(count)}
+                />
+                {count}
+              </label>
+            ))}
+          </div>
+          <div className={styles.workoutDurationControls}>
+            <p>Workout duration(minutes):</p>
+            <input
+              type="number"
+              min={1}
+              max={45}
+              value={durationMin}
+              onChange={(e) => {
+                const timeValue = Number(e.target.value);
+                if (timeValue >= 1 && timeValue <= 45) {
+                  setDurationMin(timeValue);
+                }
+              }}
+            />
+          </div>
           <nav>
             <div className={styles.navigateButtons}>
               <Button styleType="back" onClick={backToHome}>
