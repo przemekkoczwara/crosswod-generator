@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Amrap.module.css';
 import Button from '../Button/Button';
 import cardImage from '../../assets/cardAmrap2.jpg';
-import EXERCISES from '../../data/exercises';
 import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
 import TimerDown from '../TimerDown/TimerDown';
 
 export default function Amrap() {
+  // navigate
   const navigate = useNavigate();
   const backToHome = () => navigate('/');
 
+  // usteState
+  const [allExercises, setAllExercises] = useState([]);
   const [workout, setWorkout] = useState(null);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [hasStartedTimer, setHasStartedTimer] = useState(false);
   const [resetTimer, setResetTimer] = useState(0);
-  const [timerSeconds] = useState(12 * 60); // powiedzmy ze defaultowy
+  const [timerSeconds] = useState(12 * 60); // powiedzmy ze defaultowy // do zmiany bedzie
 
-  // losowanie treningu
+  // useEffect
+
+  useEffect(() => {
+    fetch('/database.json')
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        return response.json();
+      })
+      .then((data) => setAllExercises(data.exercises))
+      .catch((error) => console.error('Fetch error:', error));
+  }, []);
+
+
+  // select workout
   const randomWorkout = () => {
-    const selectedExercises = getRandomExercises(EXERCISES, 4);
+    if (allExercises.length === 0) return;
+
+    const selectedExercises = getRandomExercises(allExercises, 4);
     setWorkout({ exercises: selectedExercises });
     setHasStartedTimer(true);
     setIsTimerOn(false);
@@ -32,7 +49,7 @@ export default function Amrap() {
     console.log('Start AMRAP workout');
     setIsTimerOn(true);
   };
-  // koniec czasu
+  // timer over
   const timerEnd = () => {
     alert("Time's up! Training completed!");
     setIsTimerOn(false);
@@ -55,7 +72,11 @@ export default function Amrap() {
               <Button styleType="back" onClick={backToHome}>
                 Go back
               </Button>
-              <Button styleType="random" onClick={randomWorkout}>
+              <Button
+                styleType="random"
+                onClick={randomWorkout}
+                disabled={allExercises.length === 0}
+              >
                 Random Training
               </Button>
             </div>
