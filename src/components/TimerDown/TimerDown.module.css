@@ -1,5 +1,5 @@
 .timer {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: black;
   background: white;
@@ -8,4 +8,14 @@
   text-align: center;
   width: fit-content;
   margin: 20px auto;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.materialSymbols {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-top: 4px;
 }

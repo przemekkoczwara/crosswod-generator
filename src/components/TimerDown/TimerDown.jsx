@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styles from './TimerDown.module.css';
 
-export default function TimerDown({ seconds, timeToEnd, isActive, resetTimer }) {
+export default function TimerDown({
+  seconds,
+  timeToEnd,
+  isActive,
+  resetTimer,
+}) {
   const [timeLeft, setTimeLeft] = useState(seconds);
   useEffect(() => {
     setTimeLeft(seconds);
@@ -27,6 +32,9 @@ export default function TimerDown({ seconds, timeToEnd, isActive, resetTimer }) 
 
   return (
     <div className={styles.timer}>
+      <span className={styles.materialSymbols + ' material-symbols-outlined'}>
+        alarm
+      </span>
       {min.toString().padStart(2, '0')}:{sec.toString().padStart(2, '0')}
     </div>
   );
