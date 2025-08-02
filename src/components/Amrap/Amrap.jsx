@@ -5,6 +5,7 @@ import cardImage from '../../assets/cardAmrap2.jpg';
 import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
 import TimerDown from '../TimerDown/TimerDown';
+import saveScoreHistory from '../../utils/saveHistory';
 
 export default function Amrap() {
   // navigate
@@ -12,17 +13,24 @@ export default function Amrap() {
   const backToHome = () => navigate('/');
 
   // usteState
+
+  // exercises
   const [allExercises, setAllExercises] = useState([]);
   const [workout, setWorkout] = useState(null);
+  // timer
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [hasStartedTimer, setHasStartedTimer] = useState(false);
   const [resetTimer, setResetTimer] = useState(0);
-
-  // new function
-  const [selectLevel, setSelectedLevel] = useState('medium'); // default level
-  const [exerciseCount, setExerciseCount] = useState(4); // default level
+  // user controls
+  const [selectedLevel, setSelectedLevel] = useState(null);
+  const [exerciseCount, setExerciseCount] = useState(null);
   const [durationMin, setDurationMin] = useState(12);
-  const [timerSeconds, setTimerSeconds] = useState(durationMin * 60); // powiedzmy ze defaultowy // do zmiany bedzie
+  const [timerSeconds, setTimerSeconds] = useState(durationMin * 60);
+  // for hidden controls 
+  const [isWorkoutGenerated, setIsWorkoutGenerated] = useState(false);
+  // save score
+  const [isWorkoutFinished, setIsWorkoutFinished] = useState(false);
+  const [roundsCompleted, setRoundsCompleted] = useState(0);
 
   // useEffect
 
@@ -45,12 +53,13 @@ export default function Amrap() {
   const randomWorkout = () => {
     if (allExercises.length === 0) return;
 
-    const selectedExercises = getRandomExercises(allExercises, 4);
+    const selectedExercises = getRandomExercises(allExercises, exerciseCount);
     setWorkout({ exercises: selectedExercises });
     setHasStartedTimer(true);
     setIsTimerOn(false);
     setResetTimer((prev) => prev + 1);
     setTimerSeconds(durationMin * 60);
+    setIsWorkoutGenerated(true);
   };
 
   // start amrap
@@ -63,98 +72,112 @@ export default function Amrap() {
   const timerEnd = () => {
     alert("Time's up! Training completed!");
     setIsTimerOn(false);
+    setIsWorkoutFinished(true);
+  };
+
+  // function save score
+
+  const saveScore = () => {
+    const newScore = {
+      type: 'AMRAP',
+      date: new Date().toLocaleString(),
+      level: selectedLevel,
+      exercises: workout.exercises,
+      duration: durationMin,
+      rounds: roundsCompleted,
+    };
+
+    saveScoreHistory(newScore);
+    setIsWorkoutFinished(false);
+    setRoundsCompleted(0);
+    setWorkout(null);
+    setIsWorkoutGenerated(false);
+    setSelectedLevel(null);
+    setExerciseCount(null);
   };
 
   return (
     <section className={styles.container}>
+      <div className={styles.backButtonWrapper}>
+        <Button className={styles.backToHome} onClick={backToHome}>
+          <span
+            className={`${styles.materialSymbols} material-symbols-outlined`}
+          >
+            keyboard_double_arrow_left
+          </span>
+        </Button>
+      </div>
       <div className={styles.group}>
         <div className={styles.img}>
           <img src={cardImage} alt="Ring row men" />
         </div>
         <div className={styles.workoutContext}>
           <h2 className={styles.title}>AMRAP</h2>
-          <p className={styles.description}>
-            As Many Rounds As Possible – complete as many rounds as you can
-            within the time limit.
-          </p>
-          <div className={styles.workoutLevelsControls}>
-            <p>Choose workout level</p>
-            <label>
-              <input
-                type="radio"
-                name="difficulty"
-                value="easy"
-                checked={selectLevel === 'easy'}
-                onChange={() => setSelectedLevel('easy')}
-              />
-              Easy
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="difficulty"
-                value="medium"
-                checked={selectLevel === 'medium'}
-                onChange={() => setSelectedLevel('medium')}
-              />
-              Medium
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="difficulty"
-                value="hard"
-                checked={selectLevel === 'hard'}
-                onChange={() => setSelectedLevel('hard')}
-              />{' '}
-              Hard
-            </label>
-          </div>
-          <div className={styles.workoutCounterControls}>
-            <p>How many exercises?</p>
-            {[1, 2, 4, 5, 6, 7, 8].map((count) => (
-              <label key={count}>
-                <input
-                  type="radio"
-                  name="exerciseCount"
-                  value={count}
-                  checked={exerciseCount === count}
-                  onChange={() => setExerciseCount(count)}
-                />
-                {count}
-              </label>
-            ))}
-          </div>
-          <div className={styles.workoutDurationControls}>
-            <p>Workout duration(minutes):</p>
-            <input
-              type="number"
-              min={1}
-              max={45}
-              value={durationMin}
-              onChange={(e) => {
-                const timeValue = Number(e.target.value);
-                if (timeValue >= 1 && timeValue <= 45) {
-                  setDurationMin(timeValue);
-                }
-              }}
-            />
-          </div>
-          <nav>
-            <div className={styles.navigateButtons}>
-              <Button styleType="back" onClick={backToHome}>
-                Go back
-              </Button>
+          {!isWorkoutGenerated && (
+            <p className={styles.description}>
+              As Many Rounds As Possible – complete as many rounds as you can
+              within the time limit.
+            </p>
+          )}
+          {!isWorkoutGenerated && (
+            <div className={styles.workoutControlsWrapper}>
+              <div className={styles.workoutControls}>
+                <p>Choose your level</p>
+                {['easy', 'medium', 'hard'].map((level) => (
+                  <Button
+                    key={level}
+                    active={selectedLevel === level}
+                    onClick={() => setSelectedLevel(level)}
+                  >
+                    {level}
+                  </Button>
+                ))}
+              </div>
+              <div className={styles.workoutControls}>
+                <p>Number of exercises</p>
+                {[3, 4, 5, 6, 7, 8].map((count) => (
+                  <Button
+                    key={count}
+                    active={exerciseCount == count}
+                    onClick={() => setExerciseCount(count)}
+                  >
+                    {count}
+                  </Button>
+                ))}
+              </div>
+              <div className={styles.workoutControls}>
+                <p>Set workout duration</p>
+                <div className={styles.durationWrapper}>
+                  <Button
+                    onClick={() =>
+                      setDurationMin((prev) => Math.max(prev - 1, 10))
+                    }
+                  >
+                    -
+                  </Button>
+                  <span>{durationMin} min</span>
+                  <Button
+                    onClick={() =>
+                      setDurationMin((prev) => Math.min(prev + 1, 25))
+                    }
+                  >
+                    +
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+          {selectedLevel && exerciseCount && (
+            <div className={styles.randomButtonWrapper}>
               <Button
-                styleType="random"
+                className={styles.buttonAmrap}
                 onClick={randomWorkout}
                 disabled={allExercises.length === 0}
               >
-                Random Training
+                SELECT AMRAP
               </Button>
             </div>
-          </nav>
-
+          )}
           {hasStartedTimer && (
             <TimerDown
               seconds={timerSeconds}
@@ -175,10 +198,25 @@ export default function Amrap() {
               </ul>
             )}
           </div>
-
+          {isWorkoutFinished && (
+            <div className={styles.roundInputWrapper}>
+              <label>
+                Rounds Completed:
+                <input
+                  type="number"
+                  min={0}
+                  value={roundsCompleted}
+                  onChange={(e) => setRoundsCompleted(Number(e.target.value))}
+                />
+              </label>
+            </div>
+          )}
           {workout && !isTimerOn && (
-            <Button styleType="start" onClick={workoutStart}>
-              START AMRAP
+            <Button
+              className={styles.workoutButtonStart}
+              onClick={isWorkoutFinished ? saveScore : workoutStart}
+            >
+              {isWorkoutFinished ? 'SAVE SCORE' : 'START AMPRAP'}
             </Button>
           )}
         </div>

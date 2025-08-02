@@ -1,13 +1,21 @@
 .container {
   max-width: 850px;
   width: 100%;
-  background-color: #2c2c2c;
-  border-radius: 10px;
+  background: rgba(15, 15, 20, 0.4);
+  border-radius: 16px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  /* box-shadow: 0px 16px 18px -9px rgb(208, 54, 33); */
-  margin-top: 4rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  margin-top: 3rem;
+  position: relative;
+}
+.backButtonWrapper {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+}
+.backToHome {
+  background-color: whitesmoke;
+  color: black;
 }
 
 .group {
@@ -20,35 +28,100 @@
 .img img {
   width: 100%;
   height: 100%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 12px 0 0 12px;
   object-fit: cover;
 }
 
 .workoutContext {
   padding: 1rem 2rem;
   flex: 1;
+  margin-top: 50px;
+  min-width: 450px;
+}
+
+.title {
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: #f4f4f4;
 }
 
 .description {
   padding: 1rem 1rem;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  opacity: 0.85;
+  color: #d3d8df;
 }
 
+.workoutControlsWrapper {
+  background-color: transparent;
+  font-size: 0.85rem;
+  border-radius: 16px;
+}
 
+.workoutControls p {
+  padding: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #f4f4f4;
+}
 
-.navigateButtons {
+.durationWrapper {
   display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
 }
+.durationWrapper button {
+  font-size: 1rem;
+  padding: 14px 26px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2fff8c, #03a353);
+}
+
+.durationWrapper span {
+  min-width: 60px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e7e7e7;
+}
+
+.randomButtonWrapper {
+  margin-top: 20px;
+}
+
+.materialSymbols {
+  font-size: 1rem;
+  margin-top: 5px;
+  margin-right: 4px;
+}
+.buttonAmrap {
+  font-size: 0.8rem;
+  background-color: whitesmoke;
+  color: black;
+}
+
 .workoutList {
-  /* text-align: left; */
   margin-top: 30px;
   line-height: 2rem;
   background-color: rgb(152, 244, 134);
   border-radius: 8px;
-  margin-bottom: 50px;
 }
 
 .timer {
   color: white;
+}
+
+.workoutButtonStart {
+  font-size: 0.8rem;
+  background-color: whitesmoke;
+  color: black;
+  margin-top: 20px;
+}
+
+.roundInputWrapper {
+  background-color: #2fff8c;
+  min-height: 40px;
 }
