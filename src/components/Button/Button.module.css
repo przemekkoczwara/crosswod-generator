@@ -1,39 +1,28 @@
 /* Button style*/
 
 .button {
+  background-color: #20222a;
   border: none;
-  border-radius: 10px;
+  border-radius: 16px;
+  padding: 10px 20px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #e7e7e7;
   cursor: pointer;
-  padding: 5px 10px;
-  background-color: inherit;
-  width: fit-content;
+  transition: all 0.25s ease-in-out;
+  margin-right: 15px;
 }
 
-.default {
-  background-color: white;
+.button:hover {
+  background: linear-gradient(135deg, #ff7c33, #ffb347);
+  color: #fff;
+  transform: translateY(-2px);
 }
 
-.default:hover {
-  background-color: whitesmoke;
-}
-
-.back {
-  background-color: white;
-}
-
-.back:hover {
-  background-color: red;
-}
-
-.random {
-  background-color: greenyellow;
-}
-.start {
-  background-color: white;
-}
-.stop {
-  background-color: rgb(233, 41, 61);
-}
-.save {
-  background-color: rgb(5, 182, 232);
+.active {
+  background: linear-gradient(135deg, #2fff8c, #03a353);
+  color: #fff;
+  font-weight: 600;
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(50, 225, 170, 0.4);
 }
