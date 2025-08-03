@@ -1,5 +1,25 @@
 /* reset */
 
+/* variables */
+:root {
+  --color-primary-bg: whitesmoke;
+  --color-primary-text: black;
+  --color-tile-: #f4f4f4;
+  --color-text: #d7dade;
+
+  --gradient-green: linear-gradient(135deg, #2fff8c, #03a353);
+  --gradient-orange: linear-gradient(135deg, #ff7c33, #ffb347);
+
+  --font-size-s: 0.8rem;
+  --font-size-m: 1rem;
+  --font-size-l: 2rem;
+  --font-size-xl: 2.5rem;
+
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
