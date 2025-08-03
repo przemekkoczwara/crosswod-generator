@@ -2,7 +2,7 @@
   max-width: 850px;
   width: 100%;
   background: rgba(15, 15, 20, 0.4);
-  border-radius: 16px;
+  border-radius: var(--radius-m);
   text-align: center;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
   margin-top: 3rem;
@@ -14,8 +14,8 @@
   left: 50%;
 }
 .backToHome {
-  background-color: whitesmoke;
-  color: black;
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-dark);
 }
 
 .group {
@@ -40,9 +40,9 @@
 }
 
 .title {
-  font-size: 40px;
+  font-size: var(--font-size-xl);
   letter-spacing: 2px;
-  color: #f4f4f4;
+  color: var(--color-text-light);
 }
 
 .description {
@@ -50,7 +50,7 @@
   font-size: 1rem;
   line-height: 1.6rem;
   opacity: 0.85;
-  color: #d3d8df;
+  color: var(--color-text-light);
 }
 
 .workoutControlsWrapper {
@@ -63,7 +63,7 @@
   padding: 8px;
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: #f4f4f4;
+  color: var(--color-text-light);
 }
 
 .durationWrapper {
@@ -76,8 +76,8 @@
 .durationWrapper button {
   font-size: 1rem;
   padding: 14px 26px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #2fff8c, #03a353);
+  border-radius: var(--radius-l);
+  background: var(--gradient-green);
 }
 
 .durationWrapper span {
@@ -85,7 +85,7 @@
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
-  color: #e7e7e7;
+  color: var(--color-text-light);
 }
 
 .randomButtonWrapper {
@@ -99,14 +99,14 @@
 }
 .buttonAmrap {
   font-size: 0.8rem;
-  background-color: whitesmoke;
-  color: black;
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-dark);
 }
 
 .workoutList {
   margin-top: 30px;
   line-height: 2rem;
-  background: linear-gradient(135deg, #2fff8c, #03a353);
+  background: var(--gradient-green);
   border-radius: 8px;
   opacity: 1;
   transition: opacity 0.4s ease;
@@ -116,28 +116,29 @@
 }
 
 .timer {
-  color: white;
+  color: var(--color-primary-bg);
 }
 
 .workoutButtonStart {
   font-size: 0.8rem;
-  background-color: whitesmoke;
-  color: black;
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-dark);
   margin-top: 30px;
 }
 
 .successMsg {
-  background: linear-gradient(135deg, #ff7c33, #ffb347);
+  background: var(--gradient-orange);
   border-radius: 20px;
   font-size: 2rem;
   padding: 20px 20px;
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text-light);
   margin-bottom: 10px;
 }
 
-.succsessMsg + p:nth-child(2) {
-  margin: 20px 0;
+.roundDescrption {
+  margin-top: 50px;
+  color: var(--color-text-light);
 }
 
 .roundControls {
@@ -145,10 +146,11 @@
   justify-content: center;
   align-items: center;
   gap: 12px;
-  color: #fff;
+  color: var(--color-text-light);
+  margin-top: 30px;
 }
 .roundControls button {
-  background: linear-gradient(135deg, #2fff8c, #03a353);
+  background: var(--gradient-green);
   margin: 0;
 }
 

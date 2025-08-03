@@ -74,7 +74,7 @@ export default function Amrap() {
     setIsWorkoutFinished(true);
   };
 
-  // function save score
+  // function save score & nav > history
 
   const saveScore = () => {
     const newScore = {
@@ -94,6 +94,8 @@ export default function Amrap() {
     setSelectedLevel(null);
     setExerciseCount(null);
     setHasStartedTimer(false);
+
+    navigate('/history');
   };
 
   return (
@@ -208,7 +210,7 @@ export default function Amrap() {
               <p className={styles.successMsg}>
                 Fantastic work! You're amazing!!
               </p>
-              <p>How many rounds you did?</p>
+              <p className={styles.roundDescrption}>How many rounds you did?</p>
               <div className={styles.roundControls}>
                 <Button
                   onClick={() =>
