@@ -1,13 +1,13 @@
 /* Button style*/
 
 .button {
-  background-color: #20222a;
+  background-color: var(--color-button-bg);
   border: none;
-  border-radius: 16px;
-  padding: 10px 20px;
-  font-size: 0.7rem;
+  border-radius: var(--radius-m);
+  padding: var(--padding-std);
+  font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: #e7e7e7;
+  color: var(--color-text-light);
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   margin-right: 15px;
@@ -15,14 +15,14 @@
 
 .button:hover {
   background: linear-gradient(135deg, #ff7c33, #ffb347);
-  color: #fff;
+  color: var(--color-primary-bg);
   transform: translateY(-2px);
 }
 
 .active {
-  background: linear-gradient(135deg, #2fff8c, #03a353);
-  color: #fff;
+  background: var(--gradient-green);
+  color: var(--color-text-light);
   font-weight: 600;
   transform: scale(1.05);
-  box-shadow: 0 4px 14px rgba(50, 225, 170, 0.4);
+  box-shadow: var(--shadow);
 }
