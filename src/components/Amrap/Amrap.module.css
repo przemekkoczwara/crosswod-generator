@@ -106,8 +106,13 @@
 .workoutList {
   margin-top: 30px;
   line-height: 2rem;
-  background-color: rgb(152, 244, 134);
+  background: linear-gradient(135deg, #2fff8c, #03a353);
   border-radius: 8px;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.workoutList.hidden {
+  opacity: 0;
 }
 
 .timer {
@@ -118,10 +123,36 @@
   font-size: 0.8rem;
   background-color: whitesmoke;
   color: black;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.roundInputWrapper {
-  background-color: #2fff8c;
-  min-height: 40px;
+.successMsg {
+  background: linear-gradient(135deg, #ff7c33, #ffb347);
+  border-radius: 20px;
+  font-size: 2rem;
+  padding: 20px 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.succsessMsg + p:nth-child(2) {
+  margin: 20px 0;
+}
+
+.roundControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+.roundControls button {
+  background: linear-gradient(135deg, #2fff8c, #03a353);
+  margin: 0;
+}
+
+.roundValue {
+  font-size: 2rem;
+  font-weight: bold;
 }

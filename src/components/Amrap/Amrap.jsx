@@ -12,7 +12,7 @@ export default function Amrap() {
   const navigate = useNavigate();
   const backToHome = () => navigate('/');
 
-  // usteState
+  // useState
 
   // exercises
   const [allExercises, setAllExercises] = useState([]);
@@ -26,7 +26,7 @@ export default function Amrap() {
   const [exerciseCount, setExerciseCount] = useState(null);
   const [durationMin, setDurationMin] = useState(12);
   const [timerSeconds, setTimerSeconds] = useState(durationMin * 60);
-  // for hidden controls 
+  // for hidden controls
   const [isWorkoutGenerated, setIsWorkoutGenerated] = useState(false);
   // save score
   const [isWorkoutFinished, setIsWorkoutFinished] = useState(false);
@@ -58,7 +58,7 @@ export default function Amrap() {
     setHasStartedTimer(true);
     setIsTimerOn(false);
     setResetTimer((prev) => prev + 1);
-    setTimerSeconds(durationMin * 60);
+    setTimerSeconds(1 * 60);
     setIsWorkoutGenerated(true);
   };
 
@@ -70,7 +70,6 @@ export default function Amrap() {
   };
   // timer over
   const timerEnd = () => {
-    alert("Time's up! Training completed!");
     setIsTimerOn(false);
     setIsWorkoutFinished(true);
   };
@@ -94,6 +93,7 @@ export default function Amrap() {
     setIsWorkoutGenerated(false);
     setSelectedLevel(null);
     setExerciseCount(null);
+    setHasStartedTimer(false);
   };
 
   return (
@@ -138,7 +138,7 @@ export default function Amrap() {
                 {[3, 4, 5, 6, 7, 8].map((count) => (
                   <Button
                     key={count}
-                    active={exerciseCount == count}
+                    active={exerciseCount === count}
                     onClick={() => setExerciseCount(count)}
                   >
                     {count}
@@ -167,7 +167,7 @@ export default function Amrap() {
               </div>
             </div>
           )}
-          {selectedLevel && exerciseCount && (
+          {selectedLevel && exerciseCount && !isWorkoutFinished && (
             <div className={styles.randomButtonWrapper}>
               <Button
                 className={styles.buttonAmrap}
@@ -178,7 +178,8 @@ export default function Amrap() {
               </Button>
             </div>
           )}
-          {hasStartedTimer && (
+
+          {hasStartedTimer && !isWorkoutFinished && (
             <TimerDown
               seconds={timerSeconds}
               timeToEnd={timerEnd}
@@ -187,8 +188,12 @@ export default function Amrap() {
             />
           )}
 
-          <div className={styles.workoutList}>
-            {workout && (
+          <div
+            className={`${styles.workoutList} ${
+              isWorkoutFinished ? styles.hidden : ''
+            }`}
+          >
+            {workout && !isWorkoutFinished && (
               <ul>
                 {workout.exercises.map((exercise, index) => (
                   <li key={index}>
@@ -200,15 +205,23 @@ export default function Amrap() {
           </div>
           {isWorkoutFinished && (
             <div className={styles.roundInputWrapper}>
-              <label>
-                Rounds Completed:
-                <input
-                  type="number"
-                  min={0}
-                  value={roundsCompleted}
-                  onChange={(e) => setRoundsCompleted(Number(e.target.value))}
-                />
-              </label>
+              <p className={styles.successMsg}>
+                Fantastic work! You're amazing!!
+              </p>
+              <p>How many rounds you did?</p>
+              <div className={styles.roundControls}>
+                <Button
+                  onClick={() =>
+                    setRoundsCompleted((prev) => Math.max(prev - 1, 0))
+                  }
+                >
+                  -
+                </Button>
+                <span className={styles.roundValue}>{roundsCompleted}</span>
+                <Button onClick={() => setRoundsCompleted((prev) => prev + 1)}>
+                  +
+                </Button>
+              </div>
             </div>
           )}
           {workout && !isTimerOn && (
