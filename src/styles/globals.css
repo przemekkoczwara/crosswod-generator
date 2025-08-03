@@ -3,13 +3,16 @@
 /* variables */
 :root {
   --color-primary-bg: whitesmoke;
-  --color-primary-text: black;
-  --color-tile-: #f4f4f4;
-  --color-text: #d7dade;
+  --color-button-bg: #20222a;
+  --color-tilte-: #f4f4f4;
+  --color-text-light: #d7dade;
+  --color-text-dark: black;
 
   --gradient-green: linear-gradient(135deg, #2fff8c, #03a353);
   --gradient-orange: linear-gradient(135deg, #ff7c33, #ffb347);
 
+  --font-size-xxs: 0.6rem;
+  --font-size-xs: 0.7rem;
   --font-size-s: 0.8rem;
   --font-size-m: 1rem;
   --font-size-l: 2rem;
@@ -18,6 +21,9 @@
   --radius-s: 8px;
   --radius-m: 16px;
   --radius-l: 20px;
+
+  --shadow: 0 4px 14px rgba(50, 225, 170, 0.4);
+  --padding-std: 10px 20px;
 }
 
 * {
