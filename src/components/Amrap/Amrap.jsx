@@ -58,7 +58,7 @@ export default function Amrap() {
     setHasStartedTimer(true);
     setIsTimerOn(false);
     setResetTimer((prev) => prev + 1);
-    setTimerSeconds(1 * 60);
+    setTimerSeconds(durationMin * 60);
     setIsWorkoutGenerated(true);
   };
 
