@@ -51,7 +51,7 @@ export default function Amrap() {
 
   // select workout
   const randomWorkout = () => {
-    if (allExercises.length === 0) return;
+    if (allExercises.length === 0 || !exerciseCount) return;
 
     const selectedExercises = getRandomExercises(allExercises, exerciseCount);
     setWorkout({ exercises: selectedExercises });

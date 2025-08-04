@@ -211,9 +211,16 @@ export default function Wod() {
               </div>
             </div>
           )}
-          {workout && !isTimerOn && (
-            <Button className={styles.workoutButtonStart} onClick={workoutStart}>
-              cos tu nie działa - reszta jutro
+          {workout && (
+            <Button
+              className={styles.workoutButtonStart}
+              onClick={workoutStart}
+            >
+              {isWorkoutFinished
+                ? 'SAVE SCORE'
+                : isTimerOn
+                  ? 'STOP'
+                  : 'START WOD'}
             </Button>
           )}
         </div>
