@@ -17,16 +17,16 @@ export default function TimerUp({
     if (!isActive) return;
 
     const timerId = setInterval(() => {
-      {
-        setTimeLeft((prev) => {
-          if (limit && prev + 1 >= limit) {
-            clearInterval(timerId);
-            timeToEnd && timeToEnd();
-            return limit;
-          }
-          return prev + 1;
-        });
-      }
+      setTimeLeft((prev) => {
+        const newTime = prev + 1;
+
+        if (limit && newTime >= limit) {
+          clearInterval(timerId);
+          timeToEnd && timeToEnd();
+          return limit;
+        }
+        return newTime;
+      });
     }, 1000);
 
     return () => clearInterval(timerId);
@@ -37,6 +37,9 @@ export default function TimerUp({
 
   return (
     <div className={styles.timer}>
+      <span className={styles.materialSymbols + ' material-symbols-outlined'}>
+        alarm
+      </span>
       {min.toString().padStart(2, '0')}:{sec.toString().padStart(2, '0')}
     </div>
   );
