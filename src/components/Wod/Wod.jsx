@@ -6,7 +6,6 @@ import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
 import TimerUp from '../TimerUp/TimerUp';
 import saveScoreHistory from '../../utils/saveHistory';
-// import saveScoreHistory from '../../utils/saveHistory';
 
 export default function Wod() {
   const navigate = useNavigate();
@@ -51,7 +50,7 @@ export default function Wod() {
 
   // select workout
   const randomWorkout = () => {
-    if (allExercises === 0 || !exerciseCount) return;
+    if (allExercises.length === 0 || !exerciseCount) return;
 
     const selectedExercises = getRandomExercises(allExercises, exerciseCount);
     setWorkout({ exercises: selectedExercises });
@@ -81,6 +80,32 @@ export default function Wod() {
     }
   };
 
+  const saveScore = () => {
+    const newScore = {
+      type: 'WOD',
+      date: new Date().toLocaleString(),
+      level: selectedLevel,
+      exercises: workout.exercises,
+      targetRounds,
+      completedRounds: roundsCompleted,
+      duration: timerSeconds,
+    };
+
+    saveScoreHistory(newScore);
+
+    setIsWorkoutFinished(false);
+    setRoundsCompleted(0);
+    setWorkout(null);
+    setIsWorkoutGenerated(false);
+    setSelectedLevel(null);
+    setExerciseCount(null);
+    setHasStartedTimer(false);
+    setIsWorkoutStopped(false);
+    setIsTimerOn(false);
+
+    navigate('/history');
+  };
+
   return (
     <section className={styles.container}>
       <div className={styles.backButtonWrapper}>
@@ -97,7 +122,7 @@ export default function Wod() {
           <img src={cardImage} alt="Ring row men" />
         </div>
         <div className={styles.workoutContext}>
-          <h2 className={styles.title}>WOD</h2>
+          {!isWorkoutFinished && <h2 className={styles.title}>WOD</h2>}
           {!isWorkoutGenerated && (
             <p className={styles.description}>
               Classic Workout of the Day – a mix of functional exercises with
@@ -192,29 +217,16 @@ export default function Wod() {
           </div>
           {isWorkoutFinished && (
             <div className={styles.roundInputWrapper}>
-              <p className={styles.successMsg}>
-                Fantastic work! You're amazing!!
+              <p className={styles.successMsg}>Fantastic work! Great time!!</p>
+              <p className={styles.roundDescrption}>
+                Put the button to save your score
               </p>
-              <p className={styles.roundDescrption}>How many rounds you did?</p>
-              <div className={styles.roundControls}>
-                <Button
-                  onClick={() =>
-                    setRoundsCompleted((prev) => Math.max(prev - 1, 0))
-                  }
-                >
-                  -
-                </Button>
-                <span className={styles.roundValue}>{roundsCompleted}</span>
-                <Button onClick={() => setRoundsCompleted((prev) => prev + 1)}>
-                  +
-                </Button>
-              </div>
             </div>
           )}
           {workout && (
             <Button
               className={styles.workoutButtonStart}
-              onClick={workoutStart}
+              onClick={isWorkoutFinished ? saveScore : workoutStart}
             >
               {isWorkoutFinished
                 ? 'SAVE SCORE'

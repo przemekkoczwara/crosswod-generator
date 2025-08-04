@@ -145,6 +145,10 @@
   margin-top: 30px;
 }
 
+.roundInputWrapper { 
+   margin-top: 80px;
+
+}
 .successMsg {
   background: var(--gradient-orange);
   border-radius: 20px;
@@ -160,20 +164,4 @@
   color: var(--color-text-light);
 }
 
-.roundControls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  color: var(--color-text-light);
-  margin-top: 30px;
-}
-.roundControls button {
-  background: var(--gradient-green);
-  margin: 0;
-}
 
-.roundValue {
-  font-size: 2rem;
-  font-weight: bold;
-}
