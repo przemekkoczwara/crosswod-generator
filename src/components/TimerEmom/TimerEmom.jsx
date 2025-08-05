@@ -24,15 +24,18 @@ export default function TimerEmom({ rounds = 5, duration = 60, timeToEnd }) {
   }, [currentRound, rounds, duration, timeToEnd]);
 
   if (currentRound >= rounds) {
-    return <div className={styles.timer}>Perfect!!! Great work </div>;
+    return;
   }
+
+  const min = Math.floor(timeLeft / 60);
+  const sec = Math.floor(timeLeft % 60);
 
   return (
     <div className={styles.timer}>
-      <h3>
-        Round: {currentRound + 1} with {rounds}
-      </h3>
-      <p>Remaing Time:{timeLeft}s </p>
+      <span className={`${styles.materialSymbols} material-symbols-outlined`}>
+        alarm
+      </span>
+      {min.toString().padStart(2, '0')}:{sec.toString().padStart(2, '0')}
     </div>
   );
 }
