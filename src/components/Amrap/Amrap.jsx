@@ -46,8 +46,9 @@ export default function Amrap() {
   }, []);
 
   useEffect(() => {
-    setTimerSeconds(durationMin * 60);
+    setTimerSeconds(1 * 60);
   }, [durationMin]);
+
 
   // select workout
   const randomWorkout = () => {
@@ -65,7 +66,6 @@ export default function Amrap() {
   // start amrap
   const workoutStart = () => {
     if (!workout) return;
-    console.log('Start AMRAP workout');
     setIsTimerOn(true);
   };
   // timer over
@@ -82,8 +82,8 @@ export default function Amrap() {
       date: new Date().toLocaleString(),
       level: selectedLevel,
       exercises: workout.exercises,
-      duration: durationMin,
-      rounds: roundsCompleted,
+      duration: durationMin * 60,
+      completedRounds: roundsCompleted,
     };
 
     saveScoreHistory(newScore);
@@ -208,7 +208,7 @@ export default function Amrap() {
           {isWorkoutFinished && (
             <div className={styles.roundInputWrapper}>
               <p className={styles.successMsg}>
-                Fantastic work! You're amazing!!
+              Well done! Every round brings you closer to your goal!
               </p>
               <p className={styles.roundDescrption}>How many rounds you did?</p>
               <div className={styles.roundControls}>
