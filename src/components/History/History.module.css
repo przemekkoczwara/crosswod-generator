@@ -1,0 +1,95 @@
+.container {
+  max-width: 850px;
+  width: 100%;
+  background: rgba(15, 15, 20, 0.4);
+  border-radius: var(--radius-m);
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  margin-top: 3rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.backButtonWrapper {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.backToHome {
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-dark);
+}
+
+.materialSymbols {
+  font-size: 1rem;
+  margin-top: 5px;
+  margin-right: 4px;
+}
+
+.historyContext {
+  /* margin-top: 80px; */
+  padding: 0 2rem;
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  letter-spacing: 2px;
+  color: var(--color-text-light);
+}
+
+.description {
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  text-align: justify;
+  opacity: 0.85;
+  color: var(--color-text-dark);
+}
+
+.historyTable {
+  width: 100%;
+  margin-top: 2rem;
+  border-collapse: collapse;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.historyTable th,
+.historyTable td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(89, 196, 27, 0.1);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.historyTable th {
+  background-color: rgba(188, 58, 58, 0.05);
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.historyTable td ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.4rem;
+  text-transform: uppercase;
+}
+
+.buttonCleaner {
+  margin-top: 2rem;
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-dark);
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-s);
+  font-size: 0.9rem;
+}
