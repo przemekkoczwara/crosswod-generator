@@ -15,3 +15,11 @@
   line-height: 1;
   margin-top: 4px;
 }
+
+.exerciseInfo {
+  font-size: var(--font-size-m);
+}
+.exerciseInfo span {
+  color: var(--color-accent-timer);
+}
+
