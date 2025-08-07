@@ -87,7 +87,10 @@ export default function History() {
           setScores([]);
         }}
       >
-        Clear History
+        <span className={`${styles.materialSymbols} material-symbols-outlined`}>
+          delete
+        </span>
+        Clear 
       </Button>
     </section>
   );
@@ -114,7 +117,6 @@ function formatRounds(score) {
 
   return 'N/A';
 }
-
 
 function getExercisesTooltip(score) {
   if (!Array.isArray(score.exercises) || score.exercises.length === 0) {

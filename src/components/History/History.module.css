@@ -61,14 +61,14 @@
 .historyTable th,
 .historyTable td {
   padding: 1rem;
-  border-bottom: 1px solid rgba(89, 196, 27, 0.1);
+  border-bottom: 1px solid rgba(209, 105, 222, 0.1);
   text-align: center;
   text-transform: uppercase;
   font-size: 0.9rem;
 }
 
 .historyTable th {
-  background-color: rgba(188, 58, 58, 0.05);
+  background-color: rgba(255, 25, 25, 0.05);
   font-size: 0.7rem;
   font-weight: bold;
   text-transform: uppercase;
