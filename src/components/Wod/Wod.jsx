@@ -117,7 +117,7 @@ export default function Wod() {
   };
 
   return (
-    <section className={styles.container}>
+    <section className={styles.workoutContainer}>
       <div className={styles.backButtonWrapper}>
         <Button className={styles.backToHome} onClick={backToHome}>
           <span

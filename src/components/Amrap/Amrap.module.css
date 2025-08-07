@@ -1,4 +1,4 @@
-.container {
+.workoutContainer {
   max-width: 850px;
   width: 100%;
   background: rgba(15, 15, 20, 0.4);
@@ -8,10 +8,26 @@
   margin-top: 3rem;
   position: relative;
 }
+
+@media (max-width: 768px) {
+  .workoutContainer {
+    border-radius: 0;
+    margin: 0;
+    height: 100vh;
+  }
+}
+
 .backButtonWrapper {
   position: absolute;
   top: 30px;
   left: 50%;
+}
+
+@media (max-width: 768px) {
+  .backButtonWrapper {
+    top: 10px;
+    left: 15px;
+  }
 }
 .backToHome {
   background-color: var(--color-primary-bg);
@@ -31,12 +47,18 @@
   border-radius: 12px 0 0 12px;
   object-fit: cover;
 }
+@media (max-width: 768px) {
+  .img {
+    display: none;
+  }
+}
 
 .workoutContext {
   padding: 1rem 2rem;
   flex: 1;
   margin-top: 50px;
-  min-width: 450px;
+  min-width: 500px;
+  width: 100%;
 }
 
 .title {
@@ -47,25 +69,40 @@
 
 .description {
   padding: 1rem 1rem;
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   line-height: 1.6rem;
   opacity: 0.85;
   color: var(--color-text-light);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: var(--font-size-s);
+  }
 }
 
 .workoutControlsWrapper {
   background-color: transparent;
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
   border-radius: 16px;
+  margin-top: -20px;
 }
 
 .workoutControls p {
   padding: 8px;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-s);
+  margin: 1rem;
   color: var(--color-text-light);
+  text-transform: uppercase;
 }
 
+@media (max-width: 768px) {
+  .workoutControls p {
+    text-transform: uppercase;
+    font-size: var(--font-size-s);
+  }
+}
 .durationWrapper {
   display: flex;
   justify-content: center;
@@ -129,7 +166,7 @@
 .successMsg {
   background: var(--gradient-orange);
   border-radius: 20px;
-  font-size: 2rem;
+  font-size: var(--font-size-l);
   padding: 20px 20px;
   font-weight: bold;
   color: var(--color-text-light);

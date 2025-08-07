@@ -8,6 +8,32 @@
   margin-top: 3rem;
   padding: 50px 30px;
   height: auto;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+.goToHistoryWrapper {
+  position: absolute;
+  opacity: 0.8;
+  top: 5px;
+  right: -10px;
+}
+
+@media (max-width: 768px) {
+  .goToHistoryWrapper {
+    top: 5px;
+    right: 15px;
+  }
+}
+.goToHistory {
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-dark);
 }
 
 .title {
@@ -15,12 +41,23 @@
   font-size: var(--font-size-xl);
   letter-spacing: var(--letter-spacing-s);
 }
-
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-l);
+  }
+}
 .subtitle {
   margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--color-title);
-  letter-spacing: var(--letter-spacing-s);
+  letter-spacing: var(--letter-spacing-xs);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: var(--font-size-s);
+  }
 }
 
 .workoutGroup {
@@ -29,6 +66,12 @@
   align-items: center;
   margin-top: 3rem;
   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .workoutGroup {
+    flex-direction: column;
+  }
 }
 
 .workoutType {
@@ -54,11 +97,23 @@
   margin-top: 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .workoutType h2 {
+    font-size: var(--font-size-l);
+    margin-top: 0.5rem;
+  }
+}
+
 .workoutType p {
   font-size: var(--font-size-m);
-  margin-top: 10px;
   color: var(--color-text-light);
   margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .workoutType p {
+    font-size: var(--font-size-m);
+  }
 }
 
 .workoutType button {

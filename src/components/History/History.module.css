@@ -1,4 +1,4 @@
-.container {
+.workoutContainer {
   max-width: 850px;
   width: 100%;
   background: rgba(15, 15, 20, 0.4);
@@ -92,4 +92,51 @@
   padding: 0.75rem 2rem;
   border-radius: var(--radius-s);
   font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .workoutContainer {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .historyContext {
+    padding: 0 1rem;
+    margin-top: 4rem;
+  }
+
+  .historyTable th,
+  .historyTable td {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .historyTable td ul {
+    font-size: 0.65rem;
+    line-height: 1.2rem;
+  }
+
+  .buttonCleaner {
+    font-size: 0.8rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .backButtonWrapper {
+    top: 10px;
+    left: 10px;
+  }
+
+  .title {
+    font-size: var(--font-size-s);
+  }
+
+  .description {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
 }

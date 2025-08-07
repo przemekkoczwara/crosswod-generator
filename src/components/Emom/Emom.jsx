@@ -119,7 +119,7 @@ export default function Emom() {
   const currentExerciseIndex = currentMinute % exerciseCount;
 
   return (
-    <section className={styles.container}>
+    <section className={styles.workoutContainer}>
       <div className={styles.backButtonWrapper}>
         <Button className={styles.backToHome} onClick={backToHome}>
           <span
@@ -137,9 +137,7 @@ export default function Emom() {
           {!isWorkoutFinished && <h2 className={styles.title}>EMOM</h2>}
           {!isWorkoutGenerated && (
             <p className={styles.description}>
-              Each minute includes <span>45 seconds of work</span> and{' '}
-              <span>15 seconds of rest.</span> Adjust intensity to finish within
-              the time cap.
+              Each minute includes 45 seconds of work nd 15 seconds of rest.
             </p>
           )}
           {!isWorkoutGenerated && (

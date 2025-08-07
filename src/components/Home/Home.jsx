@@ -36,6 +36,18 @@ export default function Home() {
 
   return (
     <main className={styles.mainContainer}>
+      <div className={styles.goToHistoryWrapper}>
+        <Button
+          className={styles.goToHistory}
+          onClick={() => navigate('/history')}
+        >
+          <span
+            className={`${styles.materialSymbols} material-symbols-outlined`}
+          >
+            folder_special
+          </span>
+        </Button>
+      </div>
       <h1 className={styles.title}>CrossWOD Generator</h1>
       <p className={styles.subtitle}>Choose your workout and start training!</p>
       <section className={styles.workoutGroup}>
