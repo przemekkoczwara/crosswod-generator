@@ -84,6 +84,8 @@ export default function Emom() {
   const saveScore = () => {
     if (!workout) return;
 
+    const duration = targetRounds * workout.exercises.length * 60;
+
     const newScore = {
       type: 'EMOM',
       date: new Date().toLocaleString(),
@@ -91,6 +93,7 @@ export default function Emom() {
       exercises: workout.exercises,
       targetRounds,
       completedRounds: roundsCompleted,
+      duration,
     };
 
     saveScoreHistory(newScore);
@@ -222,6 +225,7 @@ export default function Emom() {
                     className={
                       index === currentExerciseIndex ? styles.active : ''
                     }
+                    title={exercise.description}
                   >
                     {exercise.name} - {exercise.reps} reps
                   </li>
@@ -232,7 +236,9 @@ export default function Emom() {
 
           {isWorkoutFinished && (
             <div className={styles.roundInputWrapper}>
-              <p className={styles.successMsg}>Fantastic work! Great job!!</p>
+              <p className={styles.successMsg}>
+                You finished the workout – time for a well-deserved rest!
+              </p>
               <p className={styles.roundDescrption}>
                 Click the button to save your score
               </p>
@@ -243,7 +249,6 @@ export default function Emom() {
             <Button
               className={styles.workoutButtonStart}
               onClick={isWorkoutFinished ? saveScore : workoutStart}
-              
             >
               {isWorkoutFinished
                 ? 'SAVE SCORE'

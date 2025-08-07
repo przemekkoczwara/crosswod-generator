@@ -198,7 +198,7 @@ export default function Amrap() {
             {workout && !isWorkoutFinished && (
               <ul>
                 {workout.exercises.map((exercise, index) => (
-                  <li key={index}>
+                  <li key={index} title={exercise.description}>
                     {exercise.name} - {exercise.reps} reps
                   </li>
                 ))}

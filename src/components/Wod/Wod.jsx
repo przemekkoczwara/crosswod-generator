@@ -48,6 +48,16 @@ export default function Wod() {
       .catch((error) => console.error('Fetch error', error));
   }, []);
 
+  useEffect(() => {
+    if (!isTimerOn) return;
+
+    const interval = setInterval(() => {
+      setTimerSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isTimerOn]);
+
   // select workout
   const randomWorkout = () => {
     if (allExercises.length === 0 || !exerciseCount) return;
@@ -86,11 +96,11 @@ export default function Wod() {
       date: new Date().toLocaleString(),
       level: selectedLevel,
       exercises: workout.exercises,
-      targetRounds,
-      completedRounds: roundsCompleted,
+
+      completedRounds: targetRounds,
       duration: timerSeconds,
     };
-
+    console.log('Timer seconds:', newScore); // test
     saveScoreHistory(newScore);
 
     setIsWorkoutFinished(false);
@@ -208,7 +218,7 @@ export default function Wod() {
             {workout && !isWorkoutFinished && (
               <ul>
                 {workout.exercises.map((exercise, index) => (
-                  <li key={index}>
+                  <li key={index} title={exercise.description}>
                     {exercise.name} - {exercise.reps} reps
                   </li>
                 ))}
@@ -217,7 +227,9 @@ export default function Wod() {
           </div>
           {isWorkoutFinished && (
             <div className={styles.roundInputWrapper}>
-              <p className={styles.successMsg}>Fantastic work! Great time!!</p>
+              <p className={styles.successMsg}>
+                You’re unstoppable – great workout!
+              </p>
               <p className={styles.roundDescrption}>
                 Put the button to save your score
               </p>
