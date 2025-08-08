@@ -16,7 +16,6 @@
     height: 100vh;
   }
 }
-
 .backButtonWrapper {
   position: absolute;
   top: 30px;
@@ -29,6 +28,21 @@
     left: 15px;
   }
 }
+
+/* @media (max-width: 430px) {
+  .backButtonWrapper {
+    top: 10px;
+    left: 25px;
+  }
+} */
+
+/* @media (max-width: 390px) {
+  .backButtonWrapper {
+    top: 10px;
+    left: 50px;
+  }
+} */
+
 .backToHome {
   background-color: var(--color-primary-bg);
   color: var(--color-text-dark);
@@ -57,14 +71,26 @@
   padding: 1rem 2rem;
   flex: 1;
   margin-top: 50px;
-  min-width: 500px;
+  min-width: 450px;
   width: 100%;
 }
 
+@media (max-width: 430px) {
+  .workoutContext {
+    min-width: 0;
+    width: 100%;
+  }
+}
 .title {
   font-size: var(--font-size-xl);
   letter-spacing: 2px;
   color: var(--color-text-light);
+}
+
+@media (max-width: 430px) {
+  .title {
+    font-size: var(--font-size-l);
+  }
 }
 
 .description {
@@ -82,6 +108,11 @@
   }
 }
 
+@media (max-width: 430px) {
+  .description {
+    font-size: var(--font-size-xs);
+  }
+}
 .workoutControlsWrapper {
   background-color: transparent;
   /* font-size: 0.85rem; */
@@ -99,8 +130,19 @@
 
 @media (max-width: 768px) {
   .workoutControls p {
-    text-transform: uppercase;
     font-size: var(--font-size-s);
+  }
+}
+
+@media (max-width: 430px) {
+  .workoutControls p {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 360px) {
+  .workoutControls button {
+    margin-left: 10px;
   }
 }
 .durationWrapper {
@@ -111,10 +153,17 @@
   margin-top: 10px;
 }
 .durationWrapper button {
-  font-size: 1rem;
+  font-size: var(--font-size-m);
   padding: 14px 26px;
   border-radius: var(--radius-l);
   background: var(--gradient-green);
+}
+
+@media (max-width: 430px) {
+  .workoutControls button {
+    font-size: var(--font-size-xs);
+  }
+
 }
 
 .durationWrapper span {
@@ -147,9 +196,6 @@
   border-radius: 8px;
   opacity: 1;
   transition: opacity 0.4s ease;
-}
-.workoutList.hidden {
-  opacity: 0;
 }
 
 .timer {
