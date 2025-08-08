@@ -25,7 +25,7 @@
 @media (max-width: 768px) {
   .backButtonWrapper {
     top: 10px;
-    left: 10px;
+    left: 15px;
   }
 }
 .backToHome {
@@ -39,12 +39,7 @@
   justify-content: space-between;
   height: 600px;
 }
-@media (max-width: 768px) {
-  .group {
-    flex-direction: column;
-    height: auto;
-  }
-}
+
 .img img {
   width: 100%;
   height: 100%;
@@ -63,9 +58,10 @@
   margin-top: 50px;
   min-width: 450px;
 }
-@media (max-width: 768px) {
+@media (max-width: 430px) {
   .workoutContext {
-    margin-top: 4rem;
+    min-width: 0;
+    width: 100%;
   }
 }
 .title {
@@ -74,38 +70,59 @@
   color: var(--color-text-light);
 }
 
+@media (max-width: 430px) {
+  .title {
+    font-size: var(--font-size-l);
+  }
+}
+
 .description {
-  padding: 1rem 1rem;
-  font-size: var(--font-size-xs);
-  /* line-height: 1.6rem; */
-  text-align: justify;
-  opacity: 0.85;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.6rem;
+  letter-spacing: var(--letter-spacing-s);
   color: var(--color-text-light);
   text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
   .description {
-    text-transform: uppercase;
     font-size: var(--font-size-s);
+  }
+}
+@media (max-width: 430px) {
+  .description {
+    font-size: var(--font-size-xs);
   }
 }
 .workoutControlsWrapper {
   background-color: transparent;
-  font-size: 0.85rem;
   border-radius: 16px;
+  margin-top: -20px;
 }
 
 .workoutControls p {
   padding: 8px;
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   margin: 1rem;
   color: var(--color-text-light);
+  text-transform: uppercase;
 }
 @media (max-width: 768px) {
   .workoutControls p {
-    text-transform: uppercase;
     font-size: var(--font-size-s);
+  }
+}
+
+@media (max-width: 430px) {
+  .workoutControls p {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 360px) {
+  .workoutControls button {
+    margin-left: 10px;
   }
 }
 .roundsWrapper {
@@ -148,10 +165,6 @@
 .targetInfo {
   margin-top: 20px;
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, #00ff94, #14637b);
-  color: #0a0a0a;
-  text-align: center;
-  font-weight: 700;
   text-transform: uppercase;
   font-size: 1rem;
   padding: 0.75rem 1rem;
@@ -165,12 +178,13 @@
 
 .workoutList {
   line-height: 2rem;
-  background: linear-gradient(90deg, #00ff94, #14637b);
-  /* color ??? hm */
+  background: var(--gradient-green);
   border-radius: 8px;
   opacity: 1;
   transition: opacity 0.4s ease;
-  box-shadow: 0 0 2px #e6eeeb;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  box-shadow: 0 0 6px var(--color-text-light);
 }
 .workoutList.hidden {
   opacity: 0;
@@ -204,6 +218,18 @@
   font-weight: bold;
   color: var(--color-text-light);
   margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .successMsg {
+    font-size: var(--font-size-l);
+  }
+}
+
+@media (max-width: 430px) {
+  .successMsg {
+    font-size: var(--font-size-m);
+  }
 }
 
 .roundDescrption {
