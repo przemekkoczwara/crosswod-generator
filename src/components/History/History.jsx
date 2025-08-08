@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function formatTime(seconds) {
   if (seconds == null) return 'N/A';
-  return new Date(seconds * 1000).toISOString().substr(14, 5);
+  return new Date(seconds * 1000).toISOString().slice(14, 5);
 }
 
 export default function History() {
@@ -19,7 +19,7 @@ export default function History() {
     if (storedData) {
       try {
         const savedScores = JSON.parse(storedData);
-        // Filtruje null lub nieprawidłowe elementy
+
         const filteredScores = savedScores.filter(
           (score) => score && score.date
         );
@@ -47,6 +47,9 @@ export default function History() {
         <p className={styles.description}>
           The table below displays your results. You can be proud of yourself!
         </p>
+      </div>
+      <div className={styles.rotateTable}>
+        For a better view of the table, rotate your phone horizontally.
       </div>
       <table className={styles.historyTable}>
         <thead>
@@ -90,7 +93,7 @@ export default function History() {
         <span className={`${styles.materialSymbols} material-symbols-outlined`}>
           delete
         </span>
-        Clear 
+        Clear
       </Button>
     </section>
   );
