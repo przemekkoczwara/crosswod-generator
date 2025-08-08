@@ -13,11 +13,10 @@
 
 @media (max-width: 768px) {
   .mainContainer {
-    margin-top: 0;
+    margin: 0;
     border-radius: 0;
   }
 }
-
 .goToHistoryWrapper {
   position: absolute;
   opacity: 0.8;
@@ -27,13 +26,13 @@
 
 @media (max-width: 768px) {
   .goToHistoryWrapper {
-    top: 5px;
+    top: 10px;
     right: 15px;
   }
 }
-.goToHistory {
-  background-color: var(--color-primary-bg);
-  color: var(--color-text-dark);
+
+.materialSymbols {
+  color: var(--color-accent);
 }
 
 .title {
@@ -41,11 +40,13 @@
   font-size: var(--font-size-xl);
   letter-spacing: var(--letter-spacing-s);
 }
-@media (max-width: 768px) {
+
+@media (max-width: 430px) {
   .title {
     font-size: var(--font-size-l);
   }
 }
+
 .subtitle {
   margin-top: 2rem;
   font-size: 1.2rem;
@@ -54,18 +55,17 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 430px) {
   .subtitle {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-m);
   }
 }
-
 .workoutGroup {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 3rem;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 @media (max-width: 768px) {
@@ -90,30 +90,26 @@
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .workoutGroup {
+    flex-wrap: wrap;
+  }
+}
+
 .workoutType h2 {
   font-size: var(--font-size-l);
   color: var(--color-text-light);
-  letter-spacing: var(--letter-spacing-s);
+  letter-spacing: var(--letter-spacing-m);
   margin-top: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .workoutType h2 {
-    font-size: var(--font-size-l);
-    margin-top: 0.5rem;
-  }
 }
 
 .workoutType p {
-  font-size: var(--font-size-m);
+  font-size: 0.75rem;
   color: var(--color-text-light);
   margin-top: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .workoutType p {
-    font-size: var(--font-size-m);
-  }
+  text-align: center;
+  letter-spacing: var(--letter-spacing-s);
+  text-transform: uppercase;
 }
 
 .workoutType button {
