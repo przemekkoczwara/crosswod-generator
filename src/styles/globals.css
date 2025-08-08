@@ -28,17 +28,25 @@
   --padding-std: 10px 20px;
 
   --letter-spacing-s: 2px;
+  --letter-spacing-m: 4px;
 
-  --bp-phone: 768px;
-  --bp-tablet: 1024px;
+  /* breakpoints RWD */
+  --bp-phone-s: 360px;
+  --bp-phone-m: 390px;
+  --bp-phone-l: 430px;
+  --bp-tablet: 768px;
 }
 
-*, *::before, *::after {
-
-
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 /* links*/
@@ -57,31 +65,48 @@ li {
   margin: 0 auto;
   padding: 0 1rem;
 }
-@media (max-width: 1024px) {
+
+@media (max-width: 768px) {
   .container {
-    max-width: 100%;
+    max-width: 768px;
     padding: 0 1.5rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 430px) {
   .container {
-    max-width: 100%;
-    padding: 0 2rem;
+    max-width: 430px;
+    padding: 0 1.5rem;
   }
 }
 
+@media (max-width: 390px) {
+  .container {
+    max-width: 390px;
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 360px) {
+  .container {
+    max-width: 360px;
+    padding: 0 0.8rem;
+  }
+}
 body {
   position: relative;
   display: flex;
   justify-content: center;
   min-height: 100vh;
-
   font-family: 'Michroma', sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.6;
-  overflow-x: hidden; /* 👈 ważne */
+}
+
+@media (max-width: 768px) {
+  body {
+    display: block;
+  }
 }
 
 body::before {
@@ -97,10 +122,4 @@ body::before {
   background-position: center;
   z-index: -1;
   pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  .body::before {
-    background-position: right;
-  }
 }
