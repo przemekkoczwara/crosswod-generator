@@ -29,20 +29,6 @@
   }
 }
 
-/* @media (max-width: 430px) {
-  .backButtonWrapper {
-    top: 10px;
-    left: 25px;
-  }
-} */
-
-/* @media (max-width: 390px) {
-  .backButtonWrapper {
-    top: 10px;
-    left: 50px;
-  }
-} */
-
 .backToHome {
   background-color: var(--color-primary-bg);
   color: var(--color-text-dark);
@@ -95,9 +81,9 @@
 
 .description {
   padding: 1rem 1rem;
-  font-size: var(--font-size-s);
+  font-size: 0.75rem;
   line-height: 1.6rem;
-  opacity: 0.85;
+  letter-spacing: var(--letter-spacing-s);
   color: var(--color-text-light);
   text-transform: uppercase;
 }
@@ -115,7 +101,6 @@
 }
 .workoutControlsWrapper {
   background-color: transparent;
-  /* font-size: 0.85rem; */
   border-radius: 16px;
   margin-top: -20px;
 }
@@ -163,7 +148,6 @@
   .workoutControls button {
     font-size: var(--font-size-xs);
   }
-
 }
 
 .durationWrapper span {
@@ -196,10 +180,14 @@
   border-radius: 8px;
   opacity: 1;
   transition: opacity 0.4s ease;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  box-shadow: 0 0 6px var(--color-text-light);
 }
 
 .timer {
   color: var(--color-primary-bg);
+  box-shadow: 0 0 6px var(--color-text-light);
 }
 
 .workoutButtonStart {
@@ -217,6 +205,18 @@
   font-weight: bold;
   color: var(--color-text-light);
   margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .successMsg {
+    font-size: var(--font-size-l);
+  }
+}
+
+@media (max-width: 430px) {
+  .successMsg {
+    font-size: var(--font-size-m);
+  }
 }
 
 .roundDescrption {

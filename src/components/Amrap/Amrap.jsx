@@ -49,7 +49,6 @@ export default function Amrap() {
     setTimerSeconds(1 * 60);
   }, [durationMin]);
 
-
   // select workout
   const randomWorkout = () => {
     if (allExercises.length === 0 || !exerciseCount) return;
@@ -117,7 +116,7 @@ export default function Amrap() {
           <h2 className={styles.title}>AMRAP</h2>
           {!isWorkoutGenerated && (
             <p className={styles.description}>
-              As Many Rounds As Possible – complete as many rounds as you can
+              As Many Rounds As Possible - complete as many rounds as you can
               within the time limit.
             </p>
           )}
@@ -137,7 +136,7 @@ export default function Amrap() {
               </div>
               <div className={styles.workoutControls}>
                 <p>Number of exercises</p>
-                {[3, 4, 5, 6, 7, 8].map((count) => (
+                {[3, 4, 5, 6, 7].map((count) => (
                   <Button
                     key={count}
                     active={exerciseCount === count}
@@ -208,7 +207,7 @@ export default function Amrap() {
           {isWorkoutFinished && (
             <div className={styles.roundInputWrapper}>
               <p className={styles.successMsg}>
-              Well done! Every round brings you closer to your goal!
+                Well done! Every round brings you closer to your goal!
               </p>
               <p className={styles.roundDescrption}>How many rounds you did?</p>
               <div className={styles.roundControls}>
