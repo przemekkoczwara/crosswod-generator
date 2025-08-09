@@ -5,7 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 function formatTime(seconds) {
   if (seconds == null) return 'N/A';
-  return new Date(seconds * 1000).toISOString().slice(14, 5);
+
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
 export default function History() {

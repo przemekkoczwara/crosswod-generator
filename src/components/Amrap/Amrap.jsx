@@ -46,7 +46,12 @@ export default function Amrap() {
   }, []);
 
   useEffect(() => {
-    setTimerSeconds(1 * 60);
+    setTimerSeconds(durationMin * 60);
+  }, [durationMin]);
+
+  useEffect(() => {
+    console.log('durationMin changed to:', durationMin);
+    setTimerSeconds(durationMin * 60);
   }, [durationMin]);
 
   // select workout
@@ -84,8 +89,9 @@ export default function Amrap() {
       duration: durationMin * 60,
       completedRounds: roundsCompleted,
     };
-
+    console.log('Saving score:', newScore);
     saveScoreHistory(newScore);
+
     setIsWorkoutFinished(false);
     setRoundsCompleted(0);
     setWorkout(null);
