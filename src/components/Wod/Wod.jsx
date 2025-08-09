@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Wod.module.css';
 import Button from '../Button/Button';
-import cardImage from '../../assets/Wod2.jpg';
+import cardImage from '../../assets/wod2.jpg';
 import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
 import TimerUp from '../TimerUp/TimerUp';
