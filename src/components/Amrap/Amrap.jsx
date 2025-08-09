@@ -35,7 +35,7 @@ export default function Amrap() {
   // useEffect
 
   useEffect(() => {
-    fetch('/database.json')
+    fetch('database.json')
       .then((response) => {
         if (!response.ok)
           throw new Error(`HTTP error! Status: ${response.status}`);

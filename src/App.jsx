@@ -8,11 +8,11 @@ import History from './components/History/History';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/crosswod-generator">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/amrap" element={<Amrap />} />
-        <Route path="/wod" element={<Wod />} />
+        <Route path="/wod" element={<Wod />} />n
         <Route path="/emom" element={<Emom />} />
         <Route path="/history" element={<History />} />
       </Routes>
