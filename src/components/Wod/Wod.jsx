@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import cardImage from '../../assets/wod2.jpg';
 import getRandomExercises from '../../utils/workoutGenerator';
 import { useNavigate } from 'react-router-dom';
-import TimerUp from '../TimerUp/TimerUp.jsx';
+import TimerUp from '../TimerUp/TimerUp';
 import saveScoreHistory from '../../utils/saveHistory';
 
 export default function Wod() {
