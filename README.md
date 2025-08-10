@@ -59,7 +59,7 @@ cd crosswod-generator
 ```
 2. Install packages:  
 ```
-npm instat / npm i
+npm install / npm i
 ```
 3. Run the app in development mode:
 ```
